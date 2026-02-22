@@ -34,24 +34,34 @@ def fix_agent(state):
     diagnosis = state["report"]["diagnosis"]
 
     prompt = f"""
-You are a senior data engineer.
+You are a senior data reliability engineer.
 
-Generate ONLY executable Python pandas code to fix the dataset.
+Generate ONLY executable Python pandas code to repair the dataframe.
 
 STRICT RULES:
 - Output MUST contain only raw Python code.
-- Import all required libraries.
-- Start directly with imports.
-- NO explanation.
-- NO markdown.
-- FIRST character must be valid Python.
-- Operate only on dataframe variable: df.
-- Do NOT read/write files.
-- Do NOT print.
-- Never compute mean/median on non-numeric columns.
-- Treat object/string columns as categorical.
+- Start immediately with imports.
+- No explanation or markdown.
+- Operate ONLY on existing dataframe variable: df.
+- Do NOT read or write files.
+- Do NOT print anything.
+- Do NOT create new datasets.
+- Do NOT drop rows unless absolutely necessary.
+- Prefer fixing over deleting data.
 
-Issues to fix:
+DATA HEALING REQUIREMENTS:
+1. Fix missing values appropriately:
+   - numeric → median
+   - categorical → mode or 'Unknown'
+2. Correct data types where inconsistent.
+3. Detect and treat outliers using IQR method and CLIP values (do NOT remove rows).
+4. Remove duplicate rows safely.
+5. Ensure schema consistency.
+6. Never compute statistics on non-numeric columns.
+7. Treat object/string columns as categorical.
+8. Keep row count stable whenever possible.
+
+Issues detected:
 {diagnosis}
 """
 
