@@ -1,10 +1,8 @@
 streamlit
 pandas
 numpy
-langgraph
 langchain
-langchain-community
-phidata
-duckdb
+langgraph
 openai
-scikit-learn
+phidata
+python-dotenv
