@@ -6,3 +6,4 @@ langgraph
 openai
 phidata
 python-dotenv
+duckdb
