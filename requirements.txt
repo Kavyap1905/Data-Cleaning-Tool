@@ -1,0 +1,10 @@
+streamlit
+pandas
+numpy
+langgraph
+langchain
+langchain-community
+phidata
+duckdb
+openai
+scikit-learn
